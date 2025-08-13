@@ -25,6 +25,6 @@ jobs:
         with:
           args: >
             -Dsonar.organization=dizza19
-            -Dsonar.projectKey=frontend-project-11
+            -Dsonar.projectKey=Dizza19_frontend-project-11
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
