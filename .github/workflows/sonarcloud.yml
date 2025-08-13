@@ -21,10 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.organization=dizza19
-            -Dsonar.projectKey=frontend-project-11
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  uses: SonarSource/sonarqube-scan-action@v5.0.0
+  with:
+    args: >
+      -Dsonar.organization=dizza19
+      -Dsonar.projectKey=frontend-project-11
+  env:
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
