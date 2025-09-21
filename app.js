@@ -1,4 +1,12 @@
 import { object, string } from "yup";
+import i18n from "./locales/i18n.js";
+
+setLocale({
+  string: {
+    url: () => i18n.t("form.errors.url"),
+    required: () => i18n.t("form.errors.required"),
+  },
+});
 
 const schema = object({
   field: string().required().url(),
@@ -16,7 +24,7 @@ form.addEventListener("submit", (e) => {
 
   if (feeds.includes(url)) {
     input.classList.add("is-invalid");
-    console.log("Дубль: такой URL уже есть");
+    console.log(i18n.t("form.errors.duplicate"));
     return;
   }
 
@@ -25,13 +33,13 @@ form.addEventListener("submit", (e) => {
     .then(() => {
       input.classList.remove("is-invalid");
       feeds.push(url);
-      console.log("Добавлен:", url);
+      console.log(i18n.t("form.success"));
 
       form.reset();
       input.focus();
     })
     .catch((err) => {
       input.classList.add("is-invalid");
-      console.log("Ошибка:", err.message);
+      console.log(err.message);
     });
 });
