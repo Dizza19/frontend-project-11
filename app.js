@@ -1,4 +1,4 @@
-import { object, string } from "yup";
+import { object, string, setLocale } from "yup";
 import i18n from "./locales/i18n.js";
 
 setLocale({
