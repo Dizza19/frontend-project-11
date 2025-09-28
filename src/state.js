@@ -1,10 +1,19 @@
 import onChange from "on-change";
+import { renderFeeds, renderPosts } from "./view.js";
 
-const initialState = {
+const state = {
   feeds: [],
   posts: [],
 };
 
-export const state = onChange(initialState, (path, value) => {
-  console.log(`State changed: ${path}`, value);
+export const watchedState = onChange(state, (path, value) => {
+  if (path === "feeds") {
+    const feedsContainer = document.querySelector("#feeds");
+    renderFeeds(feedsContainer, value);
+  }
+
+  if (path === "posts") {
+    const postsContainer = document.querySelector("#posts");
+    renderPosts(postsContainer, value);
+  }
 });
