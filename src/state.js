@@ -5,6 +5,6 @@ const initialState = {
   posts: [],
 };
 
-export const state = onChange(initialState, (path, value, previousValue) => {
+export const state = onChange(initialState, (path, value) => {
   console.log(`State changed: ${path}`, value);
 });
