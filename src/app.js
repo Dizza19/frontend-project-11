@@ -1,6 +1,7 @@
 import { fetchRSS } from "./api.js";
 import { state } from "./state.js";
 import { renderFeeds, renderPosts } from "./view.js";
+import { startUpdates } from "./updater.js";
 
 const form = document.querySelector("#rss-form");
 const input = form.querySelector("input[name='rssUrl']");
@@ -27,3 +28,4 @@ form.addEventListener("submit", (e) => {
       console.error(err.message);
     });
 });
+startUpdates(state, renderPosts);
