@@ -1,74 +1,90 @@
-export const renderFeeds = (feedsContainer, feeds) => {
+// src/view.js
+
+// Рендер фидов
+export const renderFeeds = (feeds) => {
+  const feedsContainer = document.getElementById("feeds");
   feedsContainer.innerHTML = "";
 
+  if (feeds.length === 0) return;
+
   const card = document.createElement("div");
-  card.classList.add("card", "border-0");
+  card.classList.add("card", "mb-3");
 
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
-  const cardTitle = document.createElement("h2");
-  cardTitle.classList.add("card-title", "h4");
-  cardTitle.textContent = "Фиды";
 
-  cardBody.appendChild(cardTitle);
-  card.appendChild(cardBody);
+  const title = document.createElement("h2");
+  title.classList.add("card-title", "h5");
+  title.textContent = "Фиды";
 
   const ul = document.createElement("ul");
-  ul.classList.add("list-group", "border-0", "rounded-0");
+  ul.classList.add("list-group", "list-group-flush");
 
   feeds.forEach((feed) => {
     const li = document.createElement("li");
-    li.classList.add("list-group-item", "border-0", "border-end-0");
+    li.classList.add("list-group-item");
 
-    const h3 = document.createElement("h3");
-    h3.classList.add("h6", "m-0");
-    h3.textContent = feed.title;
+    const feedTitle = document.createElement("h3");
+    feedTitle.classList.add("h6", "m-0");
+    feedTitle.textContent = feed.title;
 
-    const p = document.createElement("p");
-    p.classList.add("m-0", "small", "text-black-50");
-    p.textContent = feed.description;
+    const feedDesc = document.createElement("p");
+    feedDesc.classList.add("m-0", "small", "text-muted");
+    feedDesc.textContent = feed.description;
 
-    li.append(h3, p);
+    li.append(feedTitle, feedDesc);
     ul.appendChild(li);
   });
 
+  cardBody.appendChild(title);
+  card.appendChild(cardBody);
   card.appendChild(ul);
+
   feedsContainer.appendChild(card);
 };
 
-export const renderPosts = (postsContainer, posts) => {
+// Рендер постов
+export const renderPosts = (posts) => {
+  const postsContainer = document.getElementById("posts");
   postsContainer.innerHTML = "";
 
+  if (posts.length === 0) return;
+
   const card = document.createElement("div");
-  card.classList.add("card", "border-0");
+  card.classList.add("card");
 
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
-  const cardTitle = document.createElement("h2");
-  cardTitle.classList.add("card-title", "h4");
-  cardTitle.textContent = "Посты";
 
-  cardBody.appendChild(cardTitle);
-  card.appendChild(cardBody);
+  const title = document.createElement("h2");
+  title.classList.add("card-title", "h5");
+  title.textContent = "Посты";
 
   const ul = document.createElement("ul");
-  ul.classList.add("list-group", "border-0", "rounded-0");
+  ul.classList.add("list-group", "list-group-flush");
 
   posts.forEach((post) => {
     const li = document.createElement("li");
-    li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-start", "border-0", "border-end-0");
+    li.classList.add(
+      "list-group-item",
+      "d-flex",
+      "justify-content-between",
+      "align-items-start",
+    );
 
     const a = document.createElement("a");
-    a.href = post.link;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.classList.add("fw-bold");
+    a.setAttribute("href", post.link);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener noreferrer");
     a.textContent = post.title;
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.classList.add("btn", "btn-outline-primary", "btn-sm");
-    button.textContent = "Просмотр";
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
 
-    li.append(a, button);
-    ul.appendCh
+  cardBody.appendChild(title);
+  card.appendChild(cardBody);
+  card.appendChild(ul);
+
+  postsContainer.appendChild(card);
+};

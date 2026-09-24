@@ -1,5 +1,5 @@
-import onChange from "on-change";
-import { renderFeeds, renderPosts } from "./view.js";
+import onChange from 'on-change';
+import { renderFeeds, renderPosts } from './view.js';
 
 const state = {
   feeds: [],
@@ -7,13 +7,12 @@ const state = {
 };
 
 export const watchedState = onChange(state, (path, value) => {
-  if (path === "feeds") {
-    const feedsContainer = document.querySelector("#feeds");
-    renderFeeds(feedsContainer, value);
+  if (path === 'feeds') {
+    renderFeeds(value);
   }
-
-  if (path === "posts") {
-    const postsContainer = document.querySelector("#posts");
-    renderPosts(postsContainer, value);
+  if (path === 'posts') {
+    renderPosts(value);
   }
 });
+
+export default watchedState;
