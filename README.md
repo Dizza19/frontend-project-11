@@ -5,7 +5,7 @@
 
 A Single Page Application (SPA) that allows users to subscribe to various RSS feeds (news, blogs, tech articles) and read them in one clean, unified interface.
 
-[🔗 Live Demo on Vercel][(СЮДА_ВСТАВЬТЕ_ВАШУ_ССЫЛКУ_ИЗ_DEPLOYMENTS)](https://frontend-project-11-seven-orpin.vercel.app/)
+[🔗 Live Demo on Vercel]https://frontend-project-11-seven-orpin.vercel.app/
 
 ## ✨ Features & Architecture
 * **Real-time Updates:** Automatically refetches added RSS feeds every 5 seconds to deliver fresh content without page reloads.
